@@ -22,7 +22,7 @@ const App = () => {
 
   
   const handleOnChange = (searchWord) => {
-    setSearchW(searchWord);
+    setSearchW(searchWord.toLowerCase());
   };
 
 

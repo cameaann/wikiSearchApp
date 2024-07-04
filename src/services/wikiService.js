@@ -38,7 +38,7 @@ const getArticles = async (title) => {
         const successfulResults = results
           .filter((result) => result.status === "fulfilled")
           .map((result) => result.value);
-        console.log("First successful results:", successfulResults);
+      
         return successfulResults;
       }
       else{
