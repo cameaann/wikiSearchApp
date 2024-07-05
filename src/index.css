@@ -1,13 +1,14 @@
-html{
+html {
   font-size: 62.5%;
 }
 
 :root {
-
-  --backgroundColorLight:#FFFFFF;
-  --backgroundColorDark:#07022f;
-  --textColorLight:#FFFFFF;
-  --textColorDark:#07022f;
+  --backgroundColorLight: #ffffff;
+  --backgroundColorDark: #07022f;
+  --textColorLight: #ffffff;
+  --textColorDark: #07022f;
+  --borderColorLight: rgb(222, 219, 219);
+  --borderColorDark: rgb(150, 147, 147);
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -39,11 +40,31 @@ body {
   font-size: 1.6rem;
 }
 
-main{
+.header {
   padding: 2rem;
-  width:70rem;
+  border-bottom: 1px solid rgb(222, 219, 219);
+}
+.container {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
   margin: 0 auto;
+}
+
+.logobox {
+  display: flex;
+  justify-content: space-between;
+  width: 10rem;
+}
+
+#root {
   height: 100vh;
+}
+
+.main {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 5rem;
 }
 
 h1 {
@@ -51,16 +72,40 @@ h1 {
   line-height: 1.1;
 }
 
-/* 
+/* Search component */
+.search {
+  display: flex;
+  width: 40rem;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.searchLabel {
+}
+
+.searchLine {
+  width: 25rem;
+  border: 1px solid var(--borderColorLight);
+}
+
+
 @media (prefers-color-scheme: dark) {
   .dark-mode{
     background: var(--backgroundColorDark);
     color: var(--textColorLight);
   }
-} */
 
-[data-theme='dark']{
-  background: var(--backgroundColorDark);
-  color:var(--textColorLight);
-  fill:var(--textColorLight);
+  .searchLine{
+    background-color: var(--backgroundColorDark);
+  }
 }
+
+[data-theme="dark"] {
+  background-color: var(--backgroundColorDark);
+  color: var(--textColorLight);
+  fill: var(--textColorLight);
+
+}
+[data-theme="dark"] .searchLine{
+  background-color: var(--backgroundColorDark);
+}
+

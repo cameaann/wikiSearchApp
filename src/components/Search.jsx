@@ -10,10 +10,10 @@ const Search = ({ handleChange}) => {
 
 
   return (
-    <>
-      <label htmlFor="">Find the article</label>
+    <div className='search'>
+      <label className='searchLabel' htmlFor="">Find the article</label>
       <input className="searchLine" onChange={debounceOnChange} />
-    </>
+    </div>
   );
 };
 export default Search;
