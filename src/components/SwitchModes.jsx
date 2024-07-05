@@ -1,3 +1,6 @@
+
+import useTheme from "../hooks/useTheme";
+
 const SwitchModes = () =>{
 
     const [theme, handleClick] = useTheme('light');

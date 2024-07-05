@@ -3,6 +3,7 @@ import Search from "./components/Search";
 import wikiService from "./services/wikiService";
 import AllResults from "./components/AllResults";
 import { DarkModeProvider } from "./DarkModeContext";
+import SwitchModes from "./components/SwitchModes";
 
 const App = () => {
   const [searchW, setSearchW] = useState("");
@@ -27,11 +28,10 @@ const App = () => {
 
   return (
     <DarkModeProvider>
-      {/* <main> */}
+    <SwitchModes/>
         <h1>Wiki</h1>
         <Search handleChange={handleOnChange} />
         {searchW.length > 0 ? <AllResults results={results} /> : <div></div>}
-      {/* </main> */}
     </DarkModeProvider>
   );
 };

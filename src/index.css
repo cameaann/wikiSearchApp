@@ -3,13 +3,21 @@ html{
 }
 
 :root {
+
+  --backgroundColorLight:#FFFFFF;
+  --backgroundColorDark:#07022f;
+  --textColorLight:#FFFFFF;
+  --textColorDark:#07022f;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  background: var(--backgroundColorLight);
+  color: var(--textColorDark);
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* color-scheme: light dark; */
+  /* color: rgba(255, 255, 255, 0.87);
+  background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -35,6 +43,7 @@ main{
   padding: 2rem;
   width:70rem;
   margin: 0 auto;
+  height: 100vh;
 }
 
 h1 {
@@ -42,16 +51,16 @@ h1 {
   line-height: 1.1;
 }
 
+/* 
+@media (prefers-color-scheme: dark) {
+  .dark-mode{
+    background: var(--backgroundColorDark);
+    color: var(--textColorLight);
+  }
+} */
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+[data-theme='dark']{
+  background: var(--backgroundColorDark);
+  color:var(--textColorLight);
+  fill:var(--textColorLight);
 }
