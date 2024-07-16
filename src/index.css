@@ -87,14 +87,13 @@ h1 {
   border: 1px solid var(--borderColorLight);
 }
 
-
 @media (prefers-color-scheme: dark) {
-  .dark-mode{
+  .dark-mode {
     background: var(--backgroundColorDark);
     color: var(--textColorLight);
   }
 
-  .searchLine{
+  .searchLine {
     background-color: var(--backgroundColorDark);
   }
 }
@@ -103,9 +102,7 @@ h1 {
   background-color: var(--backgroundColorDark);
   color: var(--textColorLight);
   fill: var(--textColorLight);
-
 }
-[data-theme="dark"] .searchLine{
+[data-theme="dark"] .searchLine {
   background-color: var(--backgroundColorDark);
 }
-

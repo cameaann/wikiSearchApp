@@ -7,19 +7,25 @@ import Header from "./components/Header";
 
 const App = () => {
   const [searchW, setSearchW] = useState("");
+  const [languages, setLanguages ] = useState();
   const [results, setResult] = useState();
 
   useEffect(() => {
-    try {
-      if (searchW.length > 0) {
-        wikiService.getArticles(searchW).then((res) => {
-          console.log(res);
-          setResult(res);
-        });
-      }
-    } catch (error) {
-      return console.error();
-    }
+
+    wikiService.getLanguagesArray().then(res => {
+      setLanguages(Object.values(res));
+      console.log(languages);
+    })
+    // try {
+    //   if (searchW.length > 0) {
+    //     wikiService.getArticles(searchW).then((res) => {
+    //       console.log(res);
+    //       setResult(res);
+    //     });
+    //   }
+    // } catch (error) {
+    //   return console.error();
+    // }
   }, [searchW]);
 
   const handleOnChange = (searchWord) => {
@@ -30,7 +36,7 @@ const App = () => {
     <DarkModeProvider>
       <Header />
       <main className="main">
-        <Search handleChange={handleOnChange} />
+        <Search languages = {languages} handleChange={handleOnChange} />
         {searchW.length > 0 ? <AllResults results={results} /> : <div></div>}
       </main>
     </DarkModeProvider>

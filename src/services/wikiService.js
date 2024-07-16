@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const langArrayUrl = "https://commons.wikimedia.org/w/api.php?action=sitematrix&smtype=language&format=json&origin=*";
+
 const urls = [
   "https://en.wikipedia.org/api/rest_v1/page",
   "https://ru.wikipedia.org/api/rest_v1/page",
@@ -51,4 +53,11 @@ const getArticles = async (title) => {
   return res;
 };
 
-export default { getArticles };
+const getLanguagesArray = async () => {
+  const res = await axios.get(langArrayUrl)
+
+  const {sitematrix } = {...res.data}
+  return sitematrix;
+}
+
+export default { getArticles, getLanguagesArray };
