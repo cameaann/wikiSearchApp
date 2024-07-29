@@ -2,12 +2,9 @@ import axios from "axios";
 
 const langArrayUrl = "https://commons.wikimedia.org/w/api.php?action=sitematrix&smtype=language&format=json&origin=*";
 
-const urls = [
-  "https://en.wikipedia.org/api/rest_v1/page",
-  "https://ru.wikipedia.org/api/rest_v1/page",
-  "https://de.wikipedia.org/api/rest_v1/page",
-  "https://fr.wikipedia.org/api/rest_v1/page",
-];
+const url =".wikipedia.org";
+const endpoint = '/w/rest.php/v1/search/page';
+
 
 const fetchWithTimeout = (url, timeout = 5000) => {
   return new Promise((resolve, reject) => {
@@ -29,28 +26,27 @@ const fetchWithTimeout = (url, timeout = 5000) => {
   });
 };
 
-const getArticles = async (title) => {
-  const res = Promise.allSettled(
-    urls.map((url) =>
-      fetchWithTimeout(`${url}/summary/${encodeURIComponent(title)}`)
-    )
-  )
-    .then((results) => {
-      if (results.length > 1) {
-        const successfulResults = results
-          .filter((result) => result.status === "fulfilled")
-          .map((result) => result.value);
-      
-        return successfulResults;
-      }
-      else{
-        return results;
-      }
-    })
-    .catch((error) => {
-      console.error("All requests failed:", error);
-    });
-  return res;
+const getArticles = async (lang, title) => {
+
+  let finalUrl = `https://${lang}${url}${endpoint}`;
+  let linkUrl = `https://${lang}${url}/wiki/`
+
+  console.log(finalUrl);
+
+  // const res = await axios.get(`${finalUrl}/summary/${encodeURIComponent(title)}`);
+  try {
+    const res = await axios.get(finalUrl, { params:{'q': title, 'limit': 5}})
+    console.log(res.data);
+    return { 
+      data:res.data,
+      linkUrl: linkUrl
+    }
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+ 
+
 };
 
 const getLanguagesArray = async () => {

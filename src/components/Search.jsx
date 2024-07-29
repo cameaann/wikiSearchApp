@@ -1,13 +1,15 @@
 import { debounce } from "lodash";
 
-const Search = ({ handleChange, languages }) => {
-  if (languages) {
-    console.log(languages.length);
-  }
+const Search = ({ handleChange, languages, selectLang }) => {
 
   const handleOnChange = (event) => {
     handleChange(event.target.value);
   };
+
+  const handleSelectLang = (event) =>{
+    selectLang(event.target.value);
+    console.log(event.target.value);
+  }
 
   const debounceOnChange = debounce(handleOnChange, 500);
 
@@ -16,19 +18,20 @@ const Search = ({ handleChange, languages }) => {
       <label className="searchLabel" htmlFor="">
         Find the article
       </label>
-      <select defaultValue="">
+      <input className="searchLine" onChange={debounceOnChange}/>
+      <select className="selectLang" defaultValue="" onChange={handleSelectLang}>
         <option value="" disabled>
           EN
         </option>
         {languages != undefined
           ? languages.map((entry, index) => (
-              <option key={index} value={entry.code}>
+              <option key={index} value={entry.code} lang = {entry.code}>
                 {entry.name}
               </option>
             ))
           : ""}
       </select>
-      <input className="searchLine" onChange={debounceOnChange} />
+      <i className="search-btn fa-solid fa-magnifying-glass"></i>
     </div>
   );
 };

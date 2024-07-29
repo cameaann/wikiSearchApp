@@ -8,25 +8,30 @@ import Header from "./components/Header";
 const App = () => {
   const [searchW, setSearchW] = useState("");
   const [languages, setLanguages ] = useState();
+  const [ lang, setLang ] = useState('en');
   const [results, setResult] = useState();
 
   useEffect(() => {
 
     wikiService.getLanguagesArray().then(res => {
       setLanguages(Object.values(res));
-      console.log(languages);
-    })
-    // try {
-    //   if (searchW.length > 0) {
-    //     wikiService.getArticles(searchW).then((res) => {
-    //       console.log(res);
-    //       setResult(res);
-    //     });
-    //   }
-    // } catch (error) {
-    //   return console.error();
-    // }
-  }, [searchW]);
+    }).catch(err => console.error(err));
+    
+    try {
+      if (searchW.length > 0) {
+        wikiService.getArticles(lang, searchW).then((res) => {
+          console.log("Result", res);
+          setResult(res);
+        });
+      }
+    } catch (error) {
+      return console.error();
+    }
+  }, [searchW, lang]);
+
+  const handleSelectLang = (lang) =>{
+    setLang(lang);
+  }
 
   const handleOnChange = (searchWord) => {
     setSearchW(searchWord.toLowerCase());
@@ -36,8 +41,8 @@ const App = () => {
     <DarkModeProvider>
       <Header />
       <main className="main">
-        <Search languages = {languages} handleChange={handleOnChange} />
-        {searchW.length > 0 ? <AllResults results={results} /> : <div></div>}
+        <Search languages = {languages} handleChange={handleOnChange} selectLang = { handleSelectLang} />
+        {searchW.length > 0 ? <AllResults res={results} /> : <div></div>}
       </main>
     </DarkModeProvider>
   );

@@ -57,6 +57,15 @@ body {
   width: 10rem;
 }
 
+.switchBtn{
+  border: none;
+  background-color: transparent;
+}
+
+.btn-word{
+  margin-inline-end: 1rem;
+}
+
 #root {
   height: 100vh;
 }
@@ -75,16 +84,33 @@ h1 {
 /* Search component */
 .search {
   display: flex;
-  width: 40rem;
-  justify-content: space-between;
+  align-items: center;
   margin: 0 auto;
 }
 .searchLabel {
+  margin-inline-end: 5rem;
 }
 
 .searchLine {
-  width: 25rem;
+  width: 35rem;
   border: 1px solid var(--borderColorLight);
+  display: flex;
+  padding: 1rem;
+}
+
+.selectLang{
+  width: 5rem;
+  margin-inline-start: -10rem;
+  border: 1px solid var(--borderColorLight);
+  padding: 4px;
+}
+
+.search-btn{
+  margin-inline-start: 2rem;
+}
+
+.search-btn:hover{
+ cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -96,6 +122,14 @@ h1 {
   .searchLine {
     background-color: var(--backgroundColorDark);
   }
+
+  .search-btn{
+    color: var(--textColorLight);
+  }
+  .search-btn> .btn-word{
+    color: var(--textColorLight);
+  }
+
 }
 
 [data-theme="dark"] {
@@ -103,6 +137,20 @@ h1 {
   color: var(--textColorLight);
   fill: var(--textColorLight);
 }
-[data-theme="dark"] .searchLine {
+[data-theme="dark"] input.searchLine {
+  background-color: var(--backgroundColorDark);
+  color: var(--textColorLight);
+}
+
+[data-theme="dark"] .search-btn{
+  color: var(--textColorLight);
+}
+
+[data-theme="dark"] .switchBtn{
+  color: var(--textColorLight);
+}
+
+[data-theme="dark"] .selectLang{
+  color: var(--textColorLight);
   background-color: var(--backgroundColorDark);
 }

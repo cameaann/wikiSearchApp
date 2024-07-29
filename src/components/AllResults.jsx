@@ -1,22 +1,31 @@
 import Result from "./Result";
 
-const AllResults = ({ results = []}) => {
-  console.log(results);
-  return (
-    <section>
-      { (results.length > 0) ? (
-        results.map((res, index ) => (
-        <Result 
-          key = {index}
-          title={res.title}
-          description={res.description ? res.description : res.extract}
-          link={res.content_urls}
-        />
-      ))
-      ) : ( <p>No results found.</p>)
+const AllResults = ({ res }) => {
+    if (!res) {
+        return <p>Loading...</p>;
       }
-    </section>
-  );
+    const { data, linkUrl } = {...res}
+    const { pages } = { ...data}
+
+    if(pages && pages.length > 0){
+        return (
+            <section>
+             { pages.map((page, index ) => (
+              <Result 
+                key = {index}
+                title={page.title}
+                description={page.description =! isNaN ? page.description : page.extract}
+                link={`${linkUrl}${page['key']}`}
+              />
+            ))
+            }
+          </section>
+          )
+    }else{
+        return(
+            <p>No results found.</p>
+        )
+    }
 };
 
 export default AllResults;
