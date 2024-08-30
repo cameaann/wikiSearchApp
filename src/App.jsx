@@ -38,7 +38,7 @@ const App = () => {
   };
 
   return (
-    <DarkModeProvider>
+    <DarkModeProvider >
       <Header />
       <main className="main">
         <Search languages = {languages} handleChange={handleOnChange} selectLang = { handleSelectLang} />

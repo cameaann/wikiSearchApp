@@ -5,8 +5,7 @@ const Header = () => {
     <header className="header">
       <div className="container">
         <div className="logobox">
-          <img src="" alt="logo" />
-          <span className="header-title">Wiki</span>
+          {/* <img src= "./Wiki.svg" alt="logo" /> */}
         </div>
         <SwitchModes />
       </div>

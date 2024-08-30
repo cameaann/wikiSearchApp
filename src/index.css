@@ -55,11 +55,18 @@ body {
   display: flex;
   justify-content: space-between;
   width: 10rem;
+  height:5rem;
+  background-image: url('/Wikiforlight.svg');
+  background-size:100%;
+  background-repeat: no-repeat;
 }
 
 .switchBtn{
   border: none;
   background-color: transparent;
+}
+.switchBtn:hover{
+  cursor: pointer;
 }
 
 .btn-word{
@@ -153,4 +160,8 @@ h1 {
 [data-theme="dark"] .selectLang{
   color: var(--textColorLight);
   background-color: var(--backgroundColorDark);
+}
+
+[data-theme="dark"] .logobox{
+ background-image: url('/Wiki.svg');
 }
